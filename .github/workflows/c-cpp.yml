@@ -20,18 +20,24 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build using Intel C++ Compiler
+        - name: Build using Intel C++ Compiler
         run: |
           rm -rf build && CC=icc CXX=icpc cmake -B build && cmake --build build -j8
           retVal=0
           export LD_LIBRARY_PATH="third_party/linux32:$LD_LIBRARY_PATH"
-         
-     - name: Directory
+          
+        - name: Build using GCC Compiler 9.3
+        run: |
+          rm -rf build-gcc && CC=gcc CXX=g++ cmake -B build-gcc && cmake --build build-gcc -j8   
+          
+        - name: Directory
         run: |
           ls -R 
        
-      - name: Artifacts
+        - name: Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: linux32
           path: ./build/fsq_amxx_i386.so
+          name: linux32_gcc
+          path: ./build-gcc/fsq_amxx_i386.so
