@@ -40,7 +40,7 @@
 #include <amxxmodule.h>
 #include <random>
 #include <memory>
-#include <boost/functional/hash.hpp>
+//#include <boost/functional/hash.hpp>
 
 std::unique_ptr<APIData> g_APIData;
 
