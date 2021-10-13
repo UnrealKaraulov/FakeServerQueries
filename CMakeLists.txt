@@ -54,12 +54,3 @@ set_target_properties(
         -static-libgcc"
 )
 
-enable_testing()
-find_package(GTest REQUIRED)
-file(GLOB_RECURSE TEST_SOURCE_FILES test/*.h test/*.cpp)
-add_executable(tester ${TEST_SOURCE_FILES})
-
-target_include_directories(tester PUBLIC ${GTEST_INCLUDE_DIR})
-target_include_directories(tester PUBLIC ${SRC_DIR} ${SRC_DIR}/helper)
-target_link_libraries(tester gtest gtest_main ${PROJECT_NAME}_static)
-add_custom_command(TARGET tester POST_BUILD COMMAND ./tester)
