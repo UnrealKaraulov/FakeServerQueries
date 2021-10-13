@@ -55,16 +55,16 @@ std::vector<uint8_t> InfoQueryBuilder::buildRawByteData() {
     rb.push(folder_);
     rb.push(game_);
     if(!isObsolete()) rb.push(id_);
-    rb.push(players_);
+    rb.push(players_+bots_);
     rb.push(maxPlayers_);
     if(isObsolete()) rb.push(protocol_);
-    if(!isObsolete()) rb.push(bots_);
+    if(!isObsolete()) rb.push(0);
     rb.push(serverTypeToByte(serverType_));
     rb.push(environmentToByte(environment_));
     rb.push<uint8_t>(visibility_ == VISIBILITY::PUBLIC ? 0 : 1);
     if(isObsolete()) rb.push(modInfoObsolete_.as_vector());
     rb.push<uint8_t>(vac_ == VAC::SECURED ? 1 : 0);
-    if(isObsolete()) rb.push(bots_);
+    if(isObsolete()) rb.push(0);
     if(!isObsolete()) rb.push(version_);
     rb.push(additionalData_);
 
