@@ -23,6 +23,10 @@ jobs:
       - name: Build using Intel C++ Compiler 19.0
         run: |
           rm -rf build && CC=icc CXX=icpc cmake -B build && cmake --build build -j8
+       
+      - name: LIST DIR
+        run: |
+          ls -R
 
       - name: Deploy artifacts
         uses: actions/upload-artifact@v2
