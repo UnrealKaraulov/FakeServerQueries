@@ -22,6 +22,7 @@ jobs:
 
       - name: Build using Intel C++ Compiler 19.0
         run: |
+          export LD_LIBRARY_PATH="third_party/linux32:$LD_LIBRARY_PATH"
           rm -rf build && CC=icc CXX=icpc cmake -B build && cmake --build build -j8
        
       - name: Deploy artifacts

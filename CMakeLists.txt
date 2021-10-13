@@ -12,6 +12,9 @@ include_directories(${SRC_DIR})
 set(METAMOD "${THIRD_PARTY}/metamod-hl1/metamod")
 set(HLSDK "${THIRD_PARTY}/hlsdk")
 set(AMXXSDK "${THIRD_PARTY}/amxmodx/public")
+set(LIBRARIES "${THIRD_PARTY}/linux32)
+
+link_directories(${LIBRARIES})
 
 include_directories(${AMXXSDK})
 include_directories(${AMXXSDK}/sdk)
