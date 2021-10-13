@@ -12,9 +12,6 @@ include_directories(${SRC_DIR})
 set(METAMOD "${THIRD_PARTY}/metamod-hl1/metamod")
 set(HLSDK "${THIRD_PARTY}/hlsdk")
 set(AMXXSDK "${THIRD_PARTY}/amxmodx/public")
-set(LIBRARIES "${THIRD_PARTY}/linux32)
-
-link_directories(${LIBRARIES})
 
 include_directories(${AMXXSDK})
 include_directories(${AMXXSDK}/sdk)
@@ -22,6 +19,8 @@ include_directories(${AMXXSDK}/sdk)
 set(API_INCLUDE_PATH "${THIRD_PARTY} ${HLSDK}/common ${HLSDK}/dlls ${HLSDK}/engine ${HLSDK}/pm_shared ${HLSDK}/game_shared ${HLSDK}/public ${METAMOD}")
 string(REPLACE " " ";" API_INCLUDE_PATH_LIST ${API_INCLUDE_PATH})
 include_directories(${API_INCLUDE_PATH_LIST})
+
+link_directories(${THIRD_PARTY}/linux32)
 
 file(GLOB_RECURSE SOURCE_FILES ${SRC_DIR}/*.cpp ${AMXXSDK}/sdk/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
