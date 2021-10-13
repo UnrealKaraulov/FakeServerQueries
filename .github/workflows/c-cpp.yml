@@ -24,36 +24,9 @@ jobs:
         run: |
           rm -rf build && CC=icc CXX=icpc cmake -B build && cmake --build build -j8
 
-      - name: Prepare AMXX
-        run: |
-          mkdir -p publish/addons/amxmodx/modules
-          rsync -a reapi/extra/amxmodx/ publish/addons/amxmodx/
-          rsync -a reapi/version/reapi_version.inc publish/addons/amxmodx/scripting/include/
-
-      - name: Move files
-        run: |
-          mv build/reapi/reapi_amxx_i386.so publish/addons/amxmodx/modules/reapi_amxx_i386.so
-          mv reapi/version/appversion.h publish/appversion.h
-
-      - name: Run GLIBC/ABI version compat test
-        run: |
-          binaries=(
-            "publish/addons/amxmodx/modules/reapi_amxx_i386.so"
-          )
-          bash ./reapi/version/glibc_test.sh ${binaries[@]}
-          if [[ $? -ne 0 ]]; then
-            exit 1 # Assertion failed
-          fi
-        shell: bash
-
       - name: Deploy artifacts
         uses: actions/upload-artifact@v2
         id: upload-job
         with:
           name: linux32
-          path: publish/*
-
-      - name: Cleanup temporary artifacts
-        if: success() && steps.upload-job.outcome == 'success'
-        run: |
-          rm -f appversion.h
+          path: /*
