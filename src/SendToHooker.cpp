@@ -81,11 +81,9 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
             case 'm':
                 return send_new_message([](auto d) {
                     InfoQueryBuilder qb(d);
-                    int newPlayers = qb.getPlayers() + g_APIData->getPlayersDiff() + g_APIData->getPlayersNum();
-                    newPlayers = std::clamp(newPlayers, 0, 255);
-
+                    int newPlayers = qb.getPlayers() + g_APIData->getBots();
                     return qb
-                            //.setMap("de_test2")
+							.setBots(0)
                             .setPlayers(newPlayers)
                             .buildRawByteData();
                 });
