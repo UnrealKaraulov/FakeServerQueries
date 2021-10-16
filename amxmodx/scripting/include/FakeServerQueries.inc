@@ -21,7 +21,7 @@
 * @error                If players diff is out of range an error will be thrown.
 */
 native fsq_set_players_diff(const playersDiff = 0);
-
+native fsq_set_players_count(const playersDiff = -1);
 /* 
 * Creates new fake player
 *
