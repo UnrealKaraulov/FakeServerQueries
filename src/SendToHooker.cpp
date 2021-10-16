@@ -48,7 +48,7 @@
 #include <chooker.h>
 #pragma GCC diagnostic pop
 #include <api/amxx_support.h>
-#include <api/amxxmodule.h>
+#include <amxxmodule.h>
 
 typedef size_t ( *SendToPtr )( int, const void*, size_t, int, const struct sockaddr*, socklen_t );
 
