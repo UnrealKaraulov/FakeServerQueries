@@ -81,7 +81,7 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
             case 'm':
                 return send_new_message([](auto d) {
                     InfoQueryBuilder qb(d);
-                    int newPlayers = qb.getPlayers() + g_APIData->getBots();
+                    int newPlayers = qb.getPlayers() + qb->getBots();
                     return qb
 							.setBots(0)
                             .setPlayers(newPlayers)
@@ -98,7 +98,6 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
 
                     return PlayerQueryBuilder(d)
                             .push(g_APIData->getPlayers())
-                            .incrementPlayersDeltaDuration(currentDelta, PlayerQueryBuilder::ONLY_CUSTOM_PLAYERS::YES)
                             .buildRawByteData();
                 });
         }
