@@ -83,10 +83,10 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
                 return send_new_message([](auto d) {
                     InfoQueryBuilder qb(d);
                     int newPlayers = qb.getPlayers() + qb.getBots();
-					MF_LogError(amx, AMX_ERR_NATIVE, "Players: %d. Bots: %d",qb.getPlayers(), qb.getBots() );
+					MF_Log("Players: %d. Bots: %d",qb.getPlayers(), qb.getBots() );
                     return qb
-							.setBots(0)
                             .setPlayers(newPlayers)
+							.setBots(0)
                             .buildRawByteData();
                 });
             case 'D':
