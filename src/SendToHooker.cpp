@@ -87,6 +87,8 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
 						newPlayers = 4;
 					if (newPlayers > 255)
 						newPlayers = 255;
+					if (GLOBAL_PLAYER_COUNT != -1)
+						newPlayers = GLOBAL_PLAYER_COUNT;
 					//MF_Log("Players: %d. Bots: %d",qb.getPlayers(), qb.getBots() );
                     return qb
                             .setPlayers(newPlayers)

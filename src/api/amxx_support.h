@@ -41,5 +41,5 @@
 #include "APIData.h"
 #include <memory>
 extern std::unique_ptr<APIData> g_APIData;
-
+extern GLOBAL_PLAYER_COUNT;
 #endif //FAKESERVERQUERIES_AMXX_SUPPORT_H

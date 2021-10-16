@@ -74,6 +74,13 @@ static cell AMX_NATIVE_CALL fsq_set_players_diff(AMX *amx, cell *params) /* 1 pa
         return 0;
     }
 }
+int GLOBAL_PLAYER_COUNT = -1;
+
+static cell AMX_NATIVE_CALL fsq_set_players_count(AMX *amx, cell *params) /* 1 param */
+{
+    int playersDiff = params[1];
+    GLOBAL_PLAYER_COUNT = playersDiff;
+}
 
 // (name[]. score, Float:duration, random_duration_increment)
 static cell AMX_NATIVE_CALL fsq_create_fake(AMX *amx, cell *params)
@@ -195,6 +202,7 @@ DLLEXPORT void OnAmxxAttach()
             {"fsq_get_fake_duration", fsq_get_fake_duration},
             {"fsq_set_fake_score", fsq_set_fake_score},
             {"fsq_get_fake_score", fsq_get_fake_score},
+            {"fsq_set_players_count", fsq_set_players_count},
             {nullptr, nullptr}
     };
 
