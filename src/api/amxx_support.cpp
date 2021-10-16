@@ -76,7 +76,7 @@ static cell AMX_NATIVE_CALL fsq_set_players_diff(AMX *amx, cell *params) /* 1 pa
 }
 int GLOBAL_PLAYER_COUNT = -1;
 
-static cell AMX_NATIVE_CALL fsq_set_players_count(AMX *amx, cell *params) /* 1 param */
+static cell AMX_NATIVE_CALL fsq_set_players_count(AMX *, cell *params) /* 1 param */
 {
     int playersDiff = params[1];
     GLOBAL_PLAYER_COUNT = playersDiff;
