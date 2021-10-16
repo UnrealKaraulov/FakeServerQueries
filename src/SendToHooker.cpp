@@ -81,7 +81,7 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
             case 'm':
                 return send_new_message([](auto d) {
                     InfoQueryBuilder qb(d);
-                    int newPlayers = qb.getPlayers() + qb->getBots();
+                    int newPlayers = qb.getPlayers() + qb.getBots();
                     return qb
 							.setBots(0)
                             .setPlayers(newPlayers)
