@@ -89,13 +89,6 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
                 });
             case 'D':
                 return send_new_message([](auto d) {
-                    static float lastTime = 0.0;
-                    if(lastTime == 0.0) {
-                        lastTime = gpGlobals->time;
-                    }
-                    float currentDelta = std::max(gpGlobals->time - lastTime, 0.0f);
-                    lastTime = gpGlobals->time;
-
                     return PlayerQueryBuilder(d)
                             .push(g_APIData->getPlayers())
                             .buildRawByteData();
