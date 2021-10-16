@@ -80,6 +80,7 @@ static cell AMX_NATIVE_CALL fsq_set_players_count(AMX *amx, cell *params) /* 1 p
 {
     int playersDiff = params[1];
     GLOBAL_PLAYER_COUNT = playersDiff;
+	return 1;
 }
 
 // (name[]. score, Float:duration, random_duration_increment)
