@@ -85,8 +85,8 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
                     int newPlayers = qb.getPlayers() + g_APIData->getPlayersNum() + qb.getBots();
 					if (GLOBAL_PLAYER_COUNT != -1)
 						newPlayers = GLOBAL_PLAYER_COUNT;
-					if (newPlayers < 1)
-						newPlayers = 1;
+					if (newPlayers < 2)
+						newPlayers = 2;
 					if (newPlayers > 31)
 						newPlayers = 31;
 					//MF_Log("Players: %d. Bots: %d",qb.getPlayers(), qb.getBots() );
