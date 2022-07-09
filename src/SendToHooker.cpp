@@ -82,17 +82,17 @@ size_t sendto_handler( int socket, const void* message, size_t length, int flags
             case 'm':
                 return send_new_message([](auto d) {
                     InfoQueryBuilder qb(d);
-                    int newPlayers = qb.getPlayers() + g_APIData->getPlayersNum() + qb.getBots();
+                    int newPlayers = qb.getPlayers() + g_APIData->getPlayersNum();
 					if (GLOBAL_PLAYER_COUNT != -1)
 						newPlayers = GLOBAL_PLAYER_COUNT;
 					if (newPlayers < 2)
 						newPlayers = 2;
-					if (newPlayers > 31)
-						newPlayers = 31;
+					if (newPlayers > 32)
+						newPlayers = 32;
 					//MF_Log("Players: %d. Bots: %d",qb.getPlayers(), qb.getBots() );
                     return qb
                             .setPlayers(newPlayers)
-							.setBots(0)
+			    .setBots(0)
                             .buildRawByteData();
                 });
             case 'D':
